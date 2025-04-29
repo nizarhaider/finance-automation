@@ -107,21 +107,6 @@ class SmsStorageStack(Stack):
             memory_size=128,
             description="Processes SMS messages and appends them to a JSONL file in S3",
         )
-
-        # Lambda Function to process SMS and store in S3
-        sms_processor_lambda = _lambda.Function(
-            self,
-            id="test_internet_lambda",
-            function_name="test-internet",
-            runtime=runtime,
-            role=sms_lambda_role,
-            handler="test_internet.lambda_handler",
-            code=_lambda.Code.from_asset('lambda'),
-            timeout=Duration.minutes(3),
-            layers=[psycopg2_layer],
-            memory_size=128,
-            description="Testing internet",
-        )
         
         # API Gateway to trigger the Lambda function
         api = api_gateway.RestApi(
