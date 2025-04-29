@@ -1,0 +1,13 @@
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:root:Received event: {'body': '{"body": "Your account no 1234567890 has been credited with LKR 5000.00 on 2023-10-01 12:00:00. Transaction at ABC STORE has been authorized."}'}
+INFO:root:Fetching DB credentials from Secrets Manager: prod/pgsql/credentials
+INFO:root:Successfully fetched DB credentials
+INFO:root:Parsed body: {'body': 'Your account no 1234567890 has been credited with LKR 5000.00 on 2023-10-01 12:00:00. Transaction at ABC STORE has been authorized.'}
+INFO:root:Parsing SMS text: Your account no 1234567890 has been credited with LKR 5000.00 on 2023-10-01 12:00:00. Transaction at ABC STORE has been authorized.
+INFO:root:Finished parsing SMS into transaction data: {'date': '2023-10-01 12:00:00', 'category': 'Uncategorized', 'amount': 5000.0, 'description': 'Your account no 1234567890 has been credited with LKR 5000.00 on 2023-10-01 12:00:00. Transaction at ABC STORE has been authorized.', 'account_number': '1234567890', 'transaction_type': None}
+INFO:root:Parsed transaction data: {'date': '2023-10-01 12:00:00', 'category': 'Uncategorized', 'amount': 5000.0, 'description': 'Your account no 1234567890 has been credited with LKR 5000.00 on 2023-10-01 12:00:00. Transaction at ABC STORE has been authorized.', 'account_number': '1234567890', 'transaction_type': None}
+INFO:root:Connecting to PostgreSQL at finance-automation-db.c5ai4kauy3xq.ap-southeast-1.rds.amazonaws.com for DB postgres
+INFO:root:Inserting transaction: ('2023-10-01 12:00:00', 'Uncategorized', 5000.0, 'Your account no 1234567890 has been credited with LKR 5000.00 on 2023-10-01 12:00:00. Transaction at ABC STORE has been authorized.', '1234567890', None, '{"body": "Your account no 1234567890 has been credited with LKR 5000.00 on 2023-10-01 12:00:00. Transaction at ABC STORE has been authorized."}')
+INFO:root:Transaction committed successfully
+INFO:root:Database connection closed
+INFO:root:Transaction inserted successfully
